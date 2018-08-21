@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+
 import "./App.css";
 import Nav from "./component/Nav/Nav";
 import routes from "./routes";
@@ -12,7 +12,6 @@ import { withRouter } from "react-router-dom";
 
 class App extends Component {
   render() {
-    console.log("lol jeremy");
     return (
       <div className="App">
         <header className="App-header" />

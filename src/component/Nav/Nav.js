@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { map } from "async";
+// import { map } from "async";
 
 function Nav(props) {
+  console.log(props);
   return (
     <div>
       Navbar
@@ -18,15 +19,12 @@ function Nav(props) {
         <Link to="/">Logout</Link>
       </button>
       <h3>{props.user_name}</h3>
-      <img src={props.profile.pic} alt="" />
+      <img src={props.profile_pic} alt="" />
     </div>
   );
 }
 
 function mapStateToProps(state) {
-  return {
-    user_name: state.user_name,
-    profile_pic: state.profile_pic
-  };
+  return state;
 }
 export default connect(mapStateToProps)(Nav);

@@ -4,11 +4,11 @@ import { Redirect } from "react-router-dom";
 
 // import { connect } from "react-redux";
 
-// import {
-//   reducerID,
-//   reducerProfilePic,
-//   reducerUserName
-// } from "../../ducks/reducer";
+import {
+  reducerID,
+  reducerProfilePic,
+  reducerUserName
+} from "../../ducks/reducer";
 
 class Auth extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class Auth extends Component {
     this.updateUserName = this.updateUserName.bind(this);
     this.updatePassword = this.updatePassword.bind(this);
     this.handleGetUser = this.handleGetUser.bind(this);
-    this.handelAddUser = this.handleAddUser.bind(this);
+    this.handleAddUser = this.handleAddUser.bind(this);
   }
 
   updateUserName(username) {
@@ -33,18 +33,22 @@ class Auth extends Component {
   }
 
   handleGetUser() {
+    let { username, password } = this.state;
+
     axios
       .get("/api/getUser", { username, password })
       .then(res => {
-        this.props.reducerID(response.data[0].id);
-        this.props.reducerUserName(response.data[0].username);
-        this.props.reducerProfilePic(response.data[0].profile_pic);
+        this.props.reducerID(res.data[0].id);
+        this.props.reducerUserName(res.data[0].username);
+        this.props.reducerProfilePic(res.data[0].profile_pic);
         this.setState({ redirect: true });
       })
       .catch(err => err);
   }
 
   handleAddUser() {
+    let { username, password } = this.state;
+
     axios
       .post("/api/addUser", { username, password })
       .then(response => {
@@ -60,6 +64,7 @@ class Auth extends Component {
   }
 
   render() {
+    console.log(this.props);
     let { username, password } = this.state;
     return (
       <div>
@@ -68,7 +73,7 @@ class Auth extends Component {
           className="userName"
           placeholder="User Name"
           value={username}
-          onchange={e => this.updateUserName(e.target.value)}
+          onChange={e => this.updateUserName(e.target.value)}
         />
         <input
           className="password"
