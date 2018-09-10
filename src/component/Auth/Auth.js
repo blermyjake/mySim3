@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 
 import {
   reducerID,
@@ -34,9 +33,9 @@ class Auth extends Component {
 
   handleGetUser() {
     let { username, password } = this.state;
-
+    // console.log(username, password);
     axios
-      .get("/api/getUser", { username, password })
+      .post("/api/getUser", { username, password })
       .then(res => {
         this.props.reducerID(res.data[0].id);
         this.props.reducerUserName(res.data[0].username);
@@ -64,7 +63,7 @@ class Auth extends Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     let { username, password } = this.state;
     return (
       <div>
@@ -95,4 +94,7 @@ class Auth extends Component {
   }
 }
 
-export default Auth;
+export default connect(
+  null,
+  { reducerID, reducerProfilePic, reducerUserName }
+)(Auth);

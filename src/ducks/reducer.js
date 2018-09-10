@@ -9,7 +9,7 @@ const REDUCER_ID = "ID";
 const REDUCER_PROFILE_PIC = "PROFILE_PIC";
 
 function reducer(state = initialState, action) {
-  console.log("reducer hit: action ->", action);
+  // console.log("reducer hit: action ->", action);
   switch (action.type) {
     case REDUCER_USER_NAME:
       return Object.assign(state, { user_name: action.payload });
