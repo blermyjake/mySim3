@@ -53,14 +53,14 @@ class Dashboard extends Component {
     });
   }
 
-  // getMyPosts(id, search, myposts) {
-  //   axios
-  //     .post(`/api/posts/${id}`, { search: search, myposts: myposts })
-  //     .then(res => {
-  //       this.setState({ posts: res.data });
-  //     })
-  //     .catch(err => console.log(err));
-  // }
+  getMyPosts(id, search, myposts) {
+    axios
+      .post(`/api/userPost/${id}`, { search: search, myposts: myposts })
+      .then(res => {
+        this.setState({ posts: res.data });
+      })
+      .catch(err => console.log(err));
+  }
   handleEdit() {
     this.setState({ editing: true });
   }
@@ -90,15 +90,15 @@ class Dashboard extends Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.state.posts);
     let postMap = this.state.posts
       .filter((post, i) => {
         let { title } = post;
         return title.includes(this.state.search);
       })
       .map((post, i) => {
-        let { id, title, profile_pic, img, username, content } = post;
-
+        let { id, title, profile_pic, img, username, content, post_id } = post;
+        console.log(id);
         return (
           <div key={i}>
             <div>{title}</div>
@@ -111,8 +111,8 @@ class Dashboard extends Component {
                 onBlur={e => this.handleSendEdit(title)}
               />
             )}
-            <br />
-            <Link to={`/post/${id}`}>Details</Link>
+            <hr />
+            <Link to={`/post/${post_id}`}>Details</Link>
             <br />
             <button onClick={e => this.buttonClickDelete(id)}>Delete</button>
 

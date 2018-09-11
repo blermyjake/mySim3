@@ -61,6 +61,20 @@ const update = (req, res) => {
     .catch(err => res.status(500).send(err));
 };
 
+const postByUserID = (req, res) => {
+  let { id } = req.params;
+  console.log(id);
+
+  const db = req.app.get("db");
+
+  db.byID([id])
+    .then(response => {
+      console.log(response);
+      res.status(200).send(response);
+    })
+    .catch(err => res.status(500).send(err));
+};
+
 const deleteByID = (req, res) => {
   let { id } = req.query;
   console.log(id);
@@ -80,5 +94,6 @@ module.exports = {
   sessionID,
   getPostUser,
   update,
-  deleteByID
+  deleteByID,
+  postByUserID
 };

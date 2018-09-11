@@ -16,6 +16,7 @@ class Post extends Component {
     axios
       .post(`/api/userPost/${id}`)
       .then(res => {
+        console.log(res);
         this.setState({ post: res.data });
       })
       .catch(err => console.log(err));
@@ -33,7 +34,7 @@ class Post extends Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.props.match.params);
     let displaypost = this.state.post.map((display, i) => {
       return (
         <div key={i}>

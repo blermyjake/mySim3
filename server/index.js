@@ -39,7 +39,8 @@ app.post("/api/addUser", controller.addUser);
 
 app.get("/api/getPostUser", controller.getPostUser);
 
-// app.post("/api/getPostUser/:id", getPostUserID);
+// routing match object
+app.post("/api/userPost/:id", controller.postByUserID);
 
 // console.log("***HERE***");
 app.put("/api/updatePost/:title", controller.update);
