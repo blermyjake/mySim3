@@ -98,3 +98,5 @@ export default connect(
   null,
   { reducerID, reducerProfilePic, reducerUserName }
 )(Auth);
+
+// testing this out to see if it works
