@@ -11,12 +11,14 @@
     "massive": "^5.2.0",
     "merge": "^1.2.1",
     "react": "^16.4.2",
+    "react-dev-utils": "^5.0.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "redux": "^4.0.0",
-    "url-parse": "^1.4.4"
+    "url-parse": "^1.4.4",
+    "webpack-dev-server": "^3.1.14"
   },
   "scripts": {
     "start": "react-scripts start",
